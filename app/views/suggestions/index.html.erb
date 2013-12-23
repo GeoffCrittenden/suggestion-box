@@ -1,0 +1,28 @@
+<h1>Welcome to the Suggestion Box!</h1>
+<p>Add a new suggestion below:</p>
+
+<%= form_for :suggestion, url: suggestions_path do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= f.label :text %><br>
+    <%= f.text_area :text %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<% if Suggestion.all != nil %>
+  <h2>Suggestions</h2>
+  <table>
+    <tr><th>Title:</th><th>Body:</th><th>Posted by:</th></tr>
+    <% Suggestion.all.each do |suggestion| %>
+      <tr><td><%= suggestion.title %></td><td><%= suggestion.body %></td><td><%= User.find(suggestion.creator_id).username %></td></tr>
+    <% end %>
+  </table>
+<% end %>
