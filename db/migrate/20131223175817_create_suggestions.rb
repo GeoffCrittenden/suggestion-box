@@ -4,7 +4,7 @@ class CreateSuggestions < ActiveRecord::Migration
       t.integer   :creator_id
       t.string    :title
       t.string    :body
-      t.integer   :score
+      t.integer   :score, default: 0
 
       t.timestamps
     end
